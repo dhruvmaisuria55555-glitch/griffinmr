@@ -6,3 +6,24 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.service-card:hover,.button-primary:hover{transform:none}.hero-media video{display:none}}
 
 .text-link{min-height:44px}
+
+.icon-definitions {
+  position: absolute;
+  pointer-events: none;
+}
+
+.site-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
+}
+
+.brand-mark .site-icon {
+  width: 0.6em;
+  height: 0.6em;
+  vertical-align: middle;
+}
+
+.contact-art .site-icon {
+  display: block;
+}
