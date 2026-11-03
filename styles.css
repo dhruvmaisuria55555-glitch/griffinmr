@@ -27,3 +27,52 @@
 .contact-art .site-icon {
   display: block;
 }
+
+/* Shared glass material for bars and controls. */
+:root {
+  --glass-base: #f0f3e9;
+  --glass-edge: rgb(54 81 60 / 23%);
+  --glass-ink: #183526;
+  --glass-depth: 0 4px 14px rgb(25 50 31 / 8%);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass-base: rgb(244 248 237 / 77%); }
+}
+
+:is(.site-header, .hero-bottom, .industry-strip, .card-footer, .approach-foot, .site-footer,
+    .menu-toggle, .motion-toggle, .button, .text-link, .skip-link, nav a) {
+  background-color: var(--glass-tint, var(--glass-base));
+  background-image: linear-gradient(152deg, rgb(255 255 255 / 26%), transparent 49%, rgb(166 191 168 / 12%));
+  border: 1px solid var(--glass-edge);
+  color: var(--glass-ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 62%), var(--glass-depth);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  backdrop-filter: blur(16px) saturate(130%);
+}
+.approach-foot, .button-primary, .skip-link {
+  --glass-tint: rgb(18 56 39 / 94%);
+  --glass-ink: #fff;
+  --glass-edge: rgb(155 192 164 / 42%);
+}
+.hero-bottom, .approach-foot { padding: 8px 14px; border-radius: 20px; }
+.card-footer { padding: 10px 14px; border-radius: 12px; }
+.industry-strip, .site-footer, .site-header { border-inline: 0; }
+.text-link, nav a, .skip-link { border-radius: 999px; padding-inline: 16px; }
+nav { gap: 8px; }
+.js-menu nav a { padding-inline: 16px; }
+.approach-foot .text-link { color: var(--ink); --glass-tint: #e5eddf; }
+
+@media (hover: hover) {
+  :is(.button, .menu-toggle, .motion-toggle, .text-link, nav a):hover {
+    box-shadow: inset 0 1px 0 white, 0 4px 14px rgb(25 50 31 / 18%);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root { --glass-base: #f0f3e9; }
+  .approach-foot, .button-primary, .skip-link { --glass-tint: #193f30; }
+  :is(.site-header, .hero-bottom, .industry-strip, .card-footer, .approach-foot, .site-footer,
+      .menu-toggle, .motion-toggle, .button, .text-link, .skip-link, nav a) {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
